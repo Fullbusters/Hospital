@@ -9,11 +9,15 @@ public class Comment {
 
     @Id
     @GeneratedValue
+    @Column(name="Comment_Id")
     private Long commentId;
-    @Column
+    @Column(name="Creation_Date")
     private String creationDate;
-    @Column
+    @Column(name="Comment")
     private String comment;
+
+    public Comment() {
+    }
 
     public Comment(String creationDate, String commentar) {
         this.creationDate = creationDate;

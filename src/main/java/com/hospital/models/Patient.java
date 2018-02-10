@@ -4,26 +4,30 @@ package com.hospital.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="app_patient")
+@Table(name="Patients")
 public class Patient {
 
     @Id
     @GeneratedValue
+    @Column(name="Patient_id")
     private Long patientId;
-    @Column
+    @Column(name="First_Name")
     private String firstName;
-    @Column
+    @Column(name="Last_Name")
     private String lastName;
-    @Column
+    @Column(name="Date_of_Birth")
     private String dateOfBirth;
-    @Column
+    @Column(name="Sex")
     private String sex;
-    @Column
+    @Column(name="Country")
     private String country;
-    @Column
-    private String State;
-    @Column
-    private String Address;
+    @Column(name="State")
+    private String state;
+    @Column(name="Address")
+    private String address;
+
+    public Patient() {
+    }
 
     public Patient(String firstName, String lastName, String dateOfBirth, String sex, String country, String state, String address) {
         this.firstName = firstName;
@@ -31,8 +35,8 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
         this.country = country;
-        State = state;
-        Address = address;
+        this.state = state;
+        this.address = address;
     }
 
     public Long getPatientId() {
@@ -84,18 +88,18 @@ public class Patient {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 }

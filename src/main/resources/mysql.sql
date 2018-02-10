@@ -47,8 +47,33 @@ ALTER TABLE Relationship
  INSERT INTO Patients (First_Name, Last_Name, Date_Of_Birth, Sex, Country, State,Address )
  VALUES ('Name', 'Surname', '1999-12-19','male','Ukraine','','Ivano-Frankivsk');
 
+
+INSERT INTO Patients (First_Name, Last_Name, Date_Of_Birth, Sex, Country, State,Address )
+VALUES ('123', 'SurName', '2000-12-19','female','Ukraine','','Ivano-Franki');
+
+INSERT INTO Patients (First_Name, Last_Name, Date_Of_Birth, Sex, Country, State,Address )
+VALUES ('qwerty', 'LastName', '2001-12-19','male','USA','','Ivano-Franki');
+
 INSERT INTO Comments (Creation_Date, Comment)
     VALUES ('2017-02-08', 'Hello World!');
 
+INSERT INTO Comments (Creation_Date, Comment)
+VALUES ('2017-02-09', 'Hello 09!');
+
+INSERT INTO Comments (Creation_Date, Comment)
+VALUES ('2017-02-10', 'Hello 10!');
+
+INSERT INTO Comments (Creation_Date, Comment)
+VALUES ('2017-02-11', 'Hello 11!');
+
 INSERT INTO Relationship(Patient_Id, Comment_Id)
     VALUES (1,1);
+
+INSERT INTO Relationship(Patient_Id, Comment_Id)
+VALUES (2,2);
+
+INSERT INTO Relationship(Patient_Id, Comment_Id)
+VALUES (3,3);
+
+INSERT INTO Relationship(Patient_Id, Comment_Id)
+VALUES (1,4);

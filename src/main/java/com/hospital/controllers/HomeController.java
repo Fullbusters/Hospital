@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/")
-public class Home {
+public class HomeController {
 
     @RequestMapping
     public String mainPage(Model model){
-
         return "main";
     }
 }
