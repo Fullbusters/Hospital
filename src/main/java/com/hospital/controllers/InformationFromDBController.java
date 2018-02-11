@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
 
 @RestController
@@ -21,13 +22,13 @@ public class InformationFromDBController {
     private CommentServise commentServise;
 
     @RequestMapping("/patient")
-    public Iterable<Patient> getListOfPatients(){
+    public List<Patient> getListOfPatients(){
         System.out.println(patientServise.findAll());
         return patientServise.findAll();
     }
 
     @RequestMapping("/comment")
-    public Iterable<Comment> getListofComment(){
+    public List<Comment> getListofComment(){
         return commentServise.findAll();
     }
 

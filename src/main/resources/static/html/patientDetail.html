@@ -1,0 +1,45 @@
+
+<div class="row">
+    <div class="col-md-4">
+        <div align="left" >
+            <div class="tab-content" >
+                <div ng-repeat="patient in patients | where:{patientId: patientIdDetails} ">
+                    <div role="tabpanel" class="tab-pane" >
+                        <pre>Date of Birth    {{patient.dateOfBirth}}</pre>
+                        <pre>Sex              {{patient.sex}}</pre>
+                        <pre>Country          {{patient.country}}</pre>
+                        <pre>State            {{patient.state}}</pre>
+                        <pre>Address          {{patient.address}}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div>
+            <div class="overflow comment">
+                <h4>Comments</h4>
+                <hr align="center" width="100%" size="3px" color="black"/>
+                <div ng-repeat="allComments in patients | filter:{patientId:patientIdDetails}">
+                    <div ng-repeat="comment in allComments.comments">
+                        <p>{{comment.creationDate | date:'yyyy-MM-dd'}}</p>
+                        <p>{{comment.commentContent}}</p>
+                        <hr align="center" width="100%" size="3px" color="black"/>
+                    </div>
+                </div>
+            </div>
+            <div ng-controller="SendCommentForSaveCtrl" >
+                <form name="commentForm" class="row" novalidate ng-submit="commentForm.$valid  && sendCommentForm(comment)">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="input-group">
+                            <input type="text" class="form-control " required ng-model="comment.commentContent"/>
+                                <span class="input-group-btn">
+                                    <button type="submit"  class="btn btn-default " ng-disabled="commentForm.$invalid">+</button>
+                                </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

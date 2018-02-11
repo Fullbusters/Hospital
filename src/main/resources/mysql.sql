@@ -13,7 +13,8 @@ Date_Of_Birth   DATE NOT NULL,
 Sex             VARCHAR(6) NOT NULL,
 Country         VARCHAR(36) NOT NULL,
 State           VARCHAR(36),
-Address         VARCHAR(66) NOT NULL
+Address         VARCHAR(66) NOT NULL,
+Comment_Id      VARCHAR(1000)
 );
 
 
@@ -22,27 +23,14 @@ CREATE TABLE Comments
 (
 Comment_Id    BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 Creation_Date   DATE NOT NULL,
-Comment       VARCHAR(400) NOT NULL
+Comment       VARCHAR(400) NOT NULL,
+Patient_Id    BIGINT
 );
 
-DROP TABLE IF EXISTS Relationship;
-CREATE TABLE Relationship
-(
-Id              BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-Patient_Id      BIGINT NOT NULL,
-Comment_Id      BIGINT NOT NULL
-);
-
-ALTER TABLE Relationship
-  ADD CONSTRAINT Relationship_UK UNIQUE (Patient_Id, Comment_Id);
-
-ALTER TABLE Relationship
-  ADD CONSTRAINT Relationship_FK1 FOREIGN KEY (Patient_Id)
-  REFERENCES Patients(Patient_Id);
-
-ALTER TABLE Relationship
-  ADD CONSTRAINT Relationship_FK2 FOREIGN KEY (Comment_Id)
-  REFERENCES Comments(Comment_Id);
+alter table comments
+  add constraint FK_1
+foreign key (Patient_id) references patients (Patient_id)
+;
 
  INSERT INTO Patients (First_Name, Last_Name, Date_Of_Birth, Sex, Country, State,Address )
  VALUES ('Name', 'Surname', '1999-12-19','male','Ukraine','','Ivano-Frankivsk');
@@ -54,26 +42,15 @@ VALUES ('123', 'SurName', '2000-12-19','female','Ukraine','','Ivano-Franki');
 INSERT INTO Patients (First_Name, Last_Name, Date_Of_Birth, Sex, Country, State,Address )
 VALUES ('qwerty', 'LastName', '2001-12-19','male','USA','','Ivano-Franki');
 
-INSERT INTO Comments (Creation_Date, Comment)
-    VALUES ('2017-02-08', 'Hello World!');
+INSERT INTO Comments (Creation_Date, Comment, Patient_id)
+    VALUES ('2017-02-08', 'Hello World!','1');
 
-INSERT INTO Comments (Creation_Date, Comment)
-VALUES ('2017-02-09', 'Hello 09!');
+INSERT INTO Comments (Creation_Date, Comment, Patient_id)
+VALUES ('2017-02-09', 'Hello 09!','1');
 
-INSERT INTO Comments (Creation_Date, Comment)
-VALUES ('2017-02-10', 'Hello 10!');
+INSERT INTO Comments (Creation_Date, Comment, Patient_id)
+VALUES ('2017-02-10', 'Hello 10!','2');
 
-INSERT INTO Comments (Creation_Date, Comment)
-VALUES ('2017-02-11', 'Hello 11!');
+INSERT INTO Comments (Creation_Date, Comment, Patient_id)
+VALUES ('2017-02-11', 'Hello 11!','3');
 
-INSERT INTO Relationship(Patient_Id, Comment_Id)
-    VALUES (1,1);
-
-INSERT INTO Relationship(Patient_Id, Comment_Id)
-VALUES (2,2);
-
-INSERT INTO Relationship(Patient_Id, Comment_Id)
-VALUES (3,3);
-
-INSERT INTO Relationship(Patient_Id, Comment_Id)
-VALUES (1,4);

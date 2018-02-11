@@ -2,6 +2,8 @@ package com.hospital.models;
 
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="Patients")
@@ -25,6 +27,8 @@ public class Patient {
     private String state;
     @Column(name="Address")
     private String address;
+    @OneToMany( cascade = CascadeType.ALL,mappedBy = "patient")
+     private List<Comment> comments;
 
     public Patient() {
     }
@@ -101,5 +105,27 @@ public class Patient {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "patientId=" + patientId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", sex='" + sex + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

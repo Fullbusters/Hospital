@@ -1,107 +1,62 @@
 <!DOCTYPE html>
-<html lang="en"  ng-app="patientsApp">
+<html lang="en" ng-app="patientsApp">
 <head>
+    <base href="/"/>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Hospital</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/css/myStyle.css" rel="stylesheet"/>
-    <script src="/js/angular.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/main.js"></script>
-
-
 </head>
 <body ng-controller="PatientsCtrl" >
 <div class="container-fluid">
     <div class="row" >
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p></p>
-                            <input type="text"  name="search" placeholder="Пошук"/>
-                            <button > New Patient  </button>
-                         </div>
-                     <div class="col-md-9">
-                         <div class="pull-left">
-                            <pre><h4> FiirstName    LastName        25 years old </h4></pre>
-                         </div>
-                        <div class="pull-right">
-                            <p></p>
-                            <button  > Edit   </button>
-                            <button > Delete  </button>
-                        </div>
-                     </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="overflow" >
-                                <div role="tabpanel">
-                                    <ul class="nav " role="tablist" id="myTab" >
-                                        <li  role="presentation"  ng-repeat="patient in patients" ng-init="">
-                                            <a href="#patient{{patient.patientId}}" aria-controls="home" role="tab" data-toggle="tab" ng-init="">
-                                            <p align="left">{{patient.firstName}} {{patient.lastName}} </p>
-                                            <p align="left" >{{patient.dateOfBirth}} </p>
-                                            <p align="right">{{patient.sex}}</p>
-                                            <hr align="center" width="100%" size="3px" color="black"/>
-                                            </a>
-                                        </li>
-                                        <li  hidden="true" role="presentation" class="active">
-                                        <a href="#patient1" aria-controls="home" role="tab" data-toggle="tab" ng-init=""></a>
-                                        </li>
-                                    </ul>
+            <div class="row">
+                <div>
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p></p>
+                                    <input type="text"  ng-model="query" placeholder="Пошук"/>
+                                    <a href="/patient/save"  role="button" class="btn btn-default" > New Patient  </a>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="pull-left">
+                                        <pre><h4>     LastName        25 years old </h4></pre>
+                                    </div>
+                                    <div class="pull-right">
+                                        <p></p>
+                                        <button  > Edit   </button>
+                                        <button > Delete  </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div align="left" >
-                                        <div class="tab-content" >
-                                            <div  role="tabpanel" class="tab-pane active in" id="patient1">
-                                                <pre>Date of Birth    {{patients[0].dateOfBirth}}</pre>
-                                                <pre>Sex              {{patients[0].sex}}</pre>
-                                                <pre>Country          {{patients[0].country}}</pre>
-                                                <pre>State            {{patients[0].state}}</pre>
-                                                <pre>Address          {{patients[0].address}}</pre>
-                                            </div>
-                                            <div ng-repeat="patient in patients" role="tabpanel" class="tab-pane" id="patient{{patient.patientId}}">
-                                                <pre>Date of Birth    {{patient.dateOfBirth}}</pre>
-                                                <pre>Sex              {{patient.sex}}</pre>
-                                                <pre>Country          {{patient.country}}</pre>
-                                                <pre>State            {{patient.state}}</pre>
-                                                <pre>Address          {{patient.address}}</pre>
-                                            </div>
+                                <div class="col-md-3">
+                                    <div class="overflow" >
+                                        <div role="tabpanel">
+                                            <ul class="nav " role="tablist" id="myTab" >
+                                                <li  role="presentation"  ng-repeat="patient in patients | filter:query" ng-init="">
+                                                    <a href="/patientdetails/{{patient.patientId}}" aria-controls="home" role="tab" data-toggle="tab" ng-init="">
+                                                        <p align="left">{{patient.firstName}} {{patient.lastName}} </p>
+                                                        <p align="left" >{{patient.dateOfBirth}} </p>
+                                                        <p align="right">{{patient.sex}}</p>
+                                                        <hr align="center" width="100%" size="3px" color="black"/>
+                                                    </a>
+                                                </li>
+                                                <li  hidden="true" role="presentation" class="active">
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div>
-                                        <div class="overflow comment">
-                                            <h4>Comments</h4>
-                                            <hr align="center" width="100%" size="3px" color="black"/>
-                                            <div>
-                                                <p>Date</p>
-                                                <p>Comment</p>
-                                                <hr align="center" width="100%" size="3px" color="black"/>
-                                            </div>
-                                            <div>
-                                                <p>Date</p>
-                                                <p>Comment</p>
-                                                <hr align="center" width="100%" size="3px" color="black"/>
-                                            </div>
-                                        </div>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"/>
-                                            <span class="input-group-addon">+</span>
-                                        </div>
-                                    </div>
+                                <div class="col-md-9">
+                                    <ng-view></ng-view>
                                 </div>
                             </div>
                         </div>
@@ -111,5 +66,11 @@
         </div>
     </div>
 </div>
+<script src="/js/angular.js"></script>
+<script src="/js/angular-route.js"></script>
+<script src="/js/angular-filter.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

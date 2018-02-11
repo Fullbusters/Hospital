@@ -1,10 +1,10 @@
 package com.hospital.repository;
 
 import com.hospital.models.Patient;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PatientRepository extends CrudRepository<Patient, Long> {
-    public Iterable<Patient> findByCountry(String Country);
+public interface PatientRepository extends JpaRepository<Patient, Long> {
+
 }
