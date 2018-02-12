@@ -22,4 +22,12 @@ public class PatientController {
         patientServise.save(patient);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public void deletePatient(Patient patient) {
+        System.out.println(patient);
+        System.out.println(patient.getPatientId());
+         patientServise.delete(patient.getPatientId());
+    }
+
 }

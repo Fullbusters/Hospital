@@ -21,4 +21,10 @@ public class CommentServise {
     public void save(Comment comment){
         commentRepository.save(comment);
     }
+
+    public void delete(Long commentid){
+        commentRepository.delete(commentid);
+    }
+
+
 }

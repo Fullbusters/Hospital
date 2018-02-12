@@ -1,0 +1,54 @@
+
+<div class="row" ng-controller="SendPatientEditCtrl" ng-repeat="patientedit in patients | where:{patientId: patienteditid} ">
+   <form  editable-form name="patientEditForm"  class="form-horizontal" novalidate ng-submit="sendPatientEditForm(patient)">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+            <h3>Edit patient {{patientedit.patientId}}</h3>
+            <div class="form-group">
+                <label for="firstName">First Name* __ now: {{patientedit.firstName}}</label>
+                <input value="{{patientedit.firstName}}" type="text" class="form-control" id="firstName"  required  ng-model="patient.firstName">{{patientedit.firstName}}<Br>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="form-group">
+                <label for="lastName">Last Name* __ now: {{patientedit.lastName}}</label>
+                <input value="{{patientedit.lastName}}" type="text" class="form-control" id="lastName"  required ng-model="patient.lastName" >{{patientedit.lastName}}<Br>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="form-group">
+                <label for="dateOfBirth">Date Of Birth __ now:{{patientedit.dateOfBirth}}*</label>
+                <input value="{{patientedit.dateOfBirth}}" type="text" class="form-control" id="dateOfBirth" required ng-model="patient.dateOfBirth" />{{patientedit.dateOfBirth}}<Br>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="form-group">
+                <label for="sex">Sex* __ now:{{patientedit.sex}}</label>
+                <input value="{{patientedit.sex}}" type="text" class="form-control" id="sex"  required ng-model="patient.sex" />{{patientedit.sex}}<Br>
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="form-group">
+                <label for="country">Country* __ now:{{patientedit.country}}</label>
+                <input value="{{patientedit.country}}" type="text" class="form-control" id="country" required ng-model="patient.country" />{{patientedit.country}}<Br>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="form-group">
+                <label for="state">State __ now: {{patientedit.state}}</label>
+                <input value="{{patientedit.state}}"  type="text" class="form-control" id="state"   ng-model="patient.state" />{{patientedit.state}}<Br>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="form-group">
+                <label for="address">Address* __ now: {{patientedit.address}}</label>
+                <input value="{{patientedit.address}}" type="text" class="form-control" id="address"  required ng-model="patient.address" />{{patientedit.address}}<Br>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-6 col-md-3 col-md-offset-6 col-lg-2 col-lg-offset-6">
+            <button type="submit" class="btn btn-default btn-block">
+                Save edit</button>
+        </div>
+    </form>
+    <a href="/patientdetails/{{patienteditid}}"  role="button" class="btn">Cancer</a>
+</div>

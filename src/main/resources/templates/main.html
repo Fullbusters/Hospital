@@ -14,53 +14,37 @@
     <div class="row" >
         <div class="col-md-10 col-md-offset-1">
             <div class="row">
-                <div>
-                    <div class="panel panel-default col-md-12">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <p></p>
-                                    <input type="text"  ng-model="query" placeholder="Пошук"/>
-                                    <a href="/patient/save"  role="button" class="btn btn-default" > New Patient  </a>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="pull-left">
-                                        <pre><h4>     LastName        25 years old </h4></pre>
-                                    </div>
-                                    <div class="pull-right">
-                                        <p></p>
-                                        <button  > Edit   </button>
-                                        <button > Delete  </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="overflow" >
-                                        <div role="tabpanel">
-                                            <ul class="nav " role="tablist" id="myTab" >
-                                                <li  role="presentation"  ng-repeat="patient in patients | filter:query" ng-init="">
-                                                    <a href="/patientdetails/{{patient.patientId}}" aria-controls="home" role="tab" data-toggle="tab" ng-init="">
-                                                        <p align="left">{{patient.firstName}} {{patient.lastName}} </p>
-                                                        <p align="left" >{{patient.dateOfBirth}} </p>
-                                                        <p align="right">{{patient.sex}}</p>
-                                                        <hr align="center" width="100%" size="3px" color="black"/>
-                                                    </a>
-                                                </li>
-                                                <li  hidden="true" role="presentation" class="active">
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <ng-view></ng-view>
-                                </div>
+                <div class=" col-md-12">
+                    <div class="col-md-3">
+                        <p></p>
+                        <input type="text"  ng-model="query" placeholder="search"/>
+                        <a href="/patient/save"  role="button" class="btn btn-default" > New Patient  </a>
+                        <hr align="center" width="100%" size="3px" color="black"/>
+                        <div class="overflow" >
+                            <div role="tabpanel">
+                                <ul class="nav " role="tablist" id="myTab" >
+                                    <li  role="presentation"  ng-repeat="patient in patients | filter:query" >
+                                        <a href="/patientdetails/{{patient.patientId}}"  role="button" class="btn">
+                                            <p align="left">{{patient.firstName}} {{patient.lastName}} </p>
+                                            <table class="text">
+                                                <tr>
+                                                    <td>{{patient.dateOfBirth}}</td>
+                                                    <td class="rightcol">{{patient.sex}}</td>
+                                                </tr>
+                                            </table>
+                                            <hr align="center" width="100%" size="1px" color="black"/>
+                                        </a>
+                                    </li>
+                                    <li  hidden="true" role="presentation" class="active">
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-9">
+                        <ng-view></ng-view>
+                    </div>
+
                 </div>
             </div>
         </div>

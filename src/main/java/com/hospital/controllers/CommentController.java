@@ -22,8 +22,17 @@ public class CommentController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public void saveComment(Comment comment) {
         Date currentDate = new Date();
-        comment.setCreationDate(currentDate);
+        if(comment.getCreationDate()==null){
+            comment.setCreationDate(currentDate);
+        }
         System.out.println(comment);
         commentServise.save(comment);
     }
+
+    @ResponseStatus(HttpStatus.CREATED )
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public void deleteComment(Comment comment) {
+        commentServise.delete(comment.getCommentId());
+    }
+
 }

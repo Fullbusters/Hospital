@@ -1,5 +1,5 @@
 
-<div class="row"  ng-controller="SendPatientForSaveCtrl">
+<div class="row"  ng-controller="SendPatientCtrl">
     <form  name="patientForm"  class="form-horizontal" novalidate ng-submit="patientForm.$valid  && sendPatientForm(patient)">
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
             <h3>Add new patient</h3>
@@ -22,8 +22,9 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
             <div class="form-group">
-                <label for="sex">Sex (male or female)*</label>
-                <input type="text" class="form-control" id="sex" placeholder="sex" required ng-model="patient.sex"/>
+                <label for="sex">Sex* format(male or female)</label>
+                <input type="text"  class="form-control"  id="sex" placeholder="sex" required ng-model="patient.sex"/>
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
@@ -49,6 +50,7 @@
                 Save patient</button>
         </div>
     </form>
+    <a href="/"  role="button" class="btn">Cancer</a>
 </div>
 
 

@@ -20,4 +20,7 @@ public class PatientServise {
     public void save(Patient patient){
         patientRepository.save(patient);
     }
+    public void delete(Long patientId ){
+        patientRepository.delete(patientId);
+    }
 }
