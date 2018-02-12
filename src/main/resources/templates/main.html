@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="patientsApp">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="patientsApp" th:replace="~{fragments/layout :: layout (~{::body},'hello')"}>
 <head>
     <base href="/"/>
     <meta charset="UTF-8"/>
@@ -10,6 +10,9 @@
     <link href="/css/myStyle.css" rel="stylesheet"/>
 </head>
 <body ng-controller="PatientsCtrl" >
+<div class="container">
+    <p th:text="${science}"/>
+</div>
 <div class="container-fluid">
     <div class="row" >
         <div class="col-md-10 col-md-offset-1">
