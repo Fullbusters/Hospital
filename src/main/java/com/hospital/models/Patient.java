@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
+// Модель з бази даних  відповідає пацієнтові якого ми зберігли в програмі
 @Entity
 @Table(name="Patients")
 public class Patient {

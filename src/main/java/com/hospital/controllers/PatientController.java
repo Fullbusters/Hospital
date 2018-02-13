@@ -15,6 +15,7 @@ public class PatientController {
     @Autowired
     private PatientServise patientServise;
 
+    // Збереження та редагування пацієнта в БД
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/savepatient", method = RequestMethod.POST)
     public void savePatient(Patient patient) {
@@ -22,7 +23,8 @@ public class PatientController {
         patientServise.save(patient);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+    // Видалення пацієнта з БД
+    @ResponseStatus
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public void deletePatient(Patient patient) {
         System.out.println(patient);

@@ -4,6 +4,7 @@ package com.hospital.models;
 import javax.persistence.*;
 import java.util.Date;
 
+// Модель бази даних   відповідає коментаріям які ми залишали на сторінці пацієнта
 @Entity
 @Table(name="Comments")
 public class Comment {

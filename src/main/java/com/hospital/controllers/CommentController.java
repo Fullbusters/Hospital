@@ -18,6 +18,7 @@ public class CommentController {
     @Autowired
     private CommentServise commentServise;
 
+    // Збереження та редагування  даних коментарія в  БД
     @ResponseStatus(HttpStatus.CREATED )
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public void saveComment(Comment comment) {
@@ -29,7 +30,8 @@ public class CommentController {
         commentServise.save(comment);
     }
 
-    @ResponseStatus(HttpStatus.CREATED )
+    // Видалення коментарія з БД
+    @ResponseStatus
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public void deleteComment(Comment comment) {
         commentServise.delete(comment.getCommentId());

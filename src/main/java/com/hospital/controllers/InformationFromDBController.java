@@ -21,12 +21,13 @@ public class InformationFromDBController {
     @Autowired
     private CommentServise commentServise;
 
+    // Передає інформацію на сервер про всіх пацієнтів
     @RequestMapping("/patient")
     public List<Patient> getListOfPatients(){
         System.out.println(patientServise.findAll());
         return patientServise.findAll();
     }
-
+    // Передає інформацію на сервер про всі коментарії
     @RequestMapping("/comment")
     public List<Comment> getListofComment(){
         return commentServise.findAll();

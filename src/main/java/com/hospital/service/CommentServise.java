@@ -17,14 +17,11 @@ public class CommentServise {
     public List<Comment> findAll(){
         return commentRepository.findAll();
     }
-
     public void save(Comment comment){
         commentRepository.save(comment);
     }
-
     public void delete(Long commentid){
         commentRepository.delete(commentid);
     }
-
 
 }
